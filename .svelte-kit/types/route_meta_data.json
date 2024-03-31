@@ -1,0 +1,6 @@
+{
+	"/": [],
+	"/prikazi": [
+		"src/routes/prikazi/+page.server.ts"
+	]
+}
