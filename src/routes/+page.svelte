@@ -5,61 +5,76 @@
   let predmet: number;
   let profesor: number;
 
+  let profesorjiFiltered: any[] = [];
+
   let profesorji = [
-    { id: 1, name: "Alenka Mozer" },
-    { id: 2, name: "Maja Gerden" },
-    { id: 4, name: "Anže Perne" },
-    { id: 5, name: "Blanka Klobučar" },
-    { id: 7, name: "Mateja Legan Crnoja" },
-    { id: 8, name: "Timothy Gallagher" },
-    { id: 9, name: "Sonja Artač" },
-    { id: 10, name: "Barbara Černe Gresl" },
-    { id: 11, name: "Helena Potočnik Vičar" },
-    { id: 12, name: "Eva Šajn" },
-    { id: 13, name: "Edin Saračević" },
-    { id: 14, name: "Vida Kariž Merhar" },
-    { id: 15, name: "Timotej Maroševič" },
-    { id: 16, name: "Barbara Hudovernik" },
-    { id: 18, name: "Cedric Klein" },
-    { id: 19, name: "Jana Jerman" },
-    { id: 20, name: "Marija Boh" },
-    { id: 21, name: "Tjaša Koštomaj (geografija)" },
-    { id: 22, name: "Marija Mihevc" },
-    { id: 23, name: "Klemen Bajec" },
-    { id: 24, name: "Alenka Krapež" },
-    { id: 25, name: "Marina Trost" },
-    { id: 26, name: "Marta Lukanec" },
-    { id: 27, name: "Andrej Smrdu" },
-    { id: 28, name: "Alenka Pikl Osole" },
-    { id: 29, name: "Hanka Lebič" },
-    { id: 30, name: "Nives Mihelič Erbežnik" },
-    { id: 31, name: "Vanja Špelko" },
-    { id: 32, name: "Nataša Šuligoj" },
-    { id: 33, name: "Romana Vrtačič" },
-    { id: 34, name: "Tatiana Elisabet Sušnik" },
-    { id: 35, name: "Šarlota Flisek" },
-    { id: 36, name: "Mojca Strmčnik Žemva" },
-    { id: 37, name: "Majda Šajn Stjepić" },
-    { id: 38, name: "Marjetka Krapež" },
-    { id: 39, name: "Alenka Ocvirk Zelič" },
-    { id: 40, name: "Jana Ozimek" },
-    { id: 41, name: "Mirjam Šemrov" },
-    { id: 42, name: "Tanja Šket" },
-    { id: 43, name: "Mojca Kosi (slovenščina)" },
-    { id: 44, name: "Maša Novakovič (angleščina)" },
-    { id: 45, name: "Julijana Taseva (italijanščina)" },
-    { id: 46, name: "Lucija Zala Bezlaj" },
-    { id: 47, name: "Matjaž Poljanšek" },
-    { id: 48, name: "Miriam Jereb Batagelj" },
-    { id: 49, name: "Laura Repovš" },
-    { id: 50, name: "Mojca Glaser Tehovnik" },
-    { id: 51, name: "Tadeja Rudolf Vahtar" },
-    { id: 52, name: "Tadej Čopar" },
-    { id: 53, name: "Tjaša Koštomaj (zgodovina)" },
-    { id: 54, name: "Darinka Kadunc Magajna" },
-    { id: 55, name: "Jure Ausec" },
-    { id: 56, name: "Andrej Koritnik" },
+    { id: 1, name: "Alenka", surname: "Mozer", subject: 10 },
+    { id: 2, name: "Maja", surname: "Gerden", subject: 1 },
+    { id: 4, name: "Anže", surname: "Perne", subject: 1 },
+    { id: 5, name: "Blanka", surname: "Klobučar", subject: 1 },
+    { id: 7, name: "Mateja", surname: "Legan Crnoja", subject: 1 },
+    { id: 8, name: "Timothy", surname: "Gallagher", subject: 1 },
+    { id: 9, name: "Sonja", surname: "Artač", subject: 2 },
+    { id: 10, name: "Barbara", surname: "Černe Gresl", subject: 2 },
+    { id: 11, name: "Helena", surname: "Potočnik Vičar", subject: 2 },
+    { id: 12, name: "Eva", surname: "Šajn", subject: 2 },
+    { id: 13, name: "Edin", surname: "Saračević", subject: 3 },
+    { id: 14, name: "Vida", surname: "Kariž Merhar", subject: 4 },
+    { id: 15, name: "Timotej", surname: "Maroševič", subject: 4 },
+    { id: 16, name: "Barbara", surname: "Hudovernik", subject: 4 },
+    { id: 18, name: "Cedric", surname: "Klein", subject: 5 },
+    { id: 19, name: "Jana", surname: "Jerman", subject: 6 },
+    { id: 20, name: "Marija", surname: "Boh", subject: 6 },
+    { id: 22, name: "Marija", surname: "Mihevc", subject: 7 },
+    { id: 23, name: "Klemen", surname: "Bajec", subject: 8 },
+    { id: 24, name: "Alenka", surname: "Krapež", subject: 8 },
+    { id: 25, name: "Marina", surname: "Trost", subject: 8 },
+    { id: 26, name: "Marta", surname: "Lukanec", subject: 10 },
+    { id: 27, name: "Andrej", surname: "Smrdu", subject: 10 },
+    { id: 28, name: "Alenka", surname: "Pikl Osole", subject: 11 },
+    { id: 29, name: "Hanka", surname: "Lebič", subject: 12 },
+    { id: 30, name: "Nives", surname: "Mihelič Erbežnik", subject: 12 },
+    { id: 31, name: "Vanja", surname: "Špelko", subject: 12 },
+    { id: 32, name: "Nataša", surname: "Šuligoj", subject: 12 },
+    { id: 33, name: "Romana", surname: "Vrtačič", subject: 12 },
+    { id: 34, name: "Tatiana Elisabet", surname: "Sušnik", subject: 12 },
+    { id: 35, name: "Šarlota", surname: "Flisek", subject: 13 },
+    { id: 36, name: "Mojca", surname: "Strmčnik Žemva", subject: 13 },
+    { id: 37, name: "Majda", surname: "Šajn Stjepić", subject: 14 },
+    { id: 38, name: "Marjetka", surname: "Krapež", subject: 15 },
+    { id: 39, name: "Alenka", surname: "Ocvirk Zelič", subject: 15 },
+    { id: 40, name: "Jana", surname: "Ozimek", subject: 15 },
+    { id: 41, name: "Mirjam", surname: "Šemrov", subject: 15 },
+    { id: 42, name: "Tanja", surname: "Šket", subject: 15 },
+    { id: 43, name: "Mojca", surname: "Kosi (slovenščina)", subject: 15 },
+    { id: 6, name: "Mojca", surname: "Kosi (angleščina)", subject: 1 },
+    { id: 3, name: "Maša", surname: "Novakovič (nemščina)", subject: 13 },
+    { id: 44, name: "Maša", surname: "Novakovič (angleščina)", subject: 1 },
+    { id: 17, name: "Julijana", surname: "Taseva (francoščina)", subject: 5 },
+    { id: 45, name: "Julijana", surname: "Taseva (italijanščina)", subject: 9 },
+    { id: 46, name: "Lucija Zala", surname: "Bezlaj", subject: 16 },
+    { id: 47, name: "Matjaž", surname: "Poljanšek", subject: 16 },
+    { id: 48, name: "Miriam", surname: "Jereb Batagelj", subject: 17 },
+    { id: 49, name: "Laura", surname: "Repovš", subject: 17 },
+    { id: 50, name: "Mojca", surname: "Glaser Tehovnik", subject: 18 },
+    { id: 51, name: "Tadeja", surname: "Rudolf Vahtar", subject: 18 },
+    { id: 52, name: "Tadej", surname: "Čopar", subject: 18 },
+    { id: 53, name: "Tjaša", surname: "Koštomaj (zgodovina)", subject: 18 },
+    { id: 21, name: "Tjaša", surname: "Koštomaj (geografija)", subject: 6 },
+    { id: 54, name: "Darinka", surname: "Kadunc Magajna", subject: 18 },
+    { id: 55, name: "Jure", surname: "Ausec", subject: 4 },
+    { id: 56, name: "Andrej", surname: "Koritnik", subject: 15 },
   ];
+
+  function filtrirajProfesorje() {
+    if (predmet === undefined) {
+      return profesorji;
+    }
+
+    return profesorji.filter(
+      (profesor: any) => parseInt(profesor.subject) === parseInt(predmet)
+    );
+  }
 </script>
 
 <form
@@ -95,6 +110,9 @@
 
     <select
       bind:value={predmet}
+      on:change={() => {
+        profesorjiFiltered = filtrirajProfesorje();
+      }}
       required
       class="mt-1.5 w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
     >
@@ -127,18 +145,20 @@
 
     <select
       bind:value={profesor}
+      disabled={profesorjiFiltered.length === 0}
       required
       class="mt-1.5 w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
     >
-      {#each profesorji as profesor}
-        <option value={profesor.id}>{profesor.name}</option>
+      <option value>Izberi Profesorja</option>
+      {#each profesorjiFiltered as profesor}
+        <option value={profesor.id}>{profesor.name} {profesor.surname}</option>
       {/each}
     </select>
   </div>
   <button
-    class="group mt-4 relative w-full items-center overflow-hidden rounded bg-indigo-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
+    class="mt-4 relative w-full items-center overflow-hidden rounded-xl bg-black px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
     type="submit"
   >
-    <span class="text-sm font-medium"> Download </span>
+    <span class="text-sm font-medium"> Prikaži </span>
   </button>
 </form>

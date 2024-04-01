@@ -4,4 +4,5 @@ export interface Test {
   professor_id: number;
   created_at: string;
   additional_note: string;
+  test_id: number;
 }

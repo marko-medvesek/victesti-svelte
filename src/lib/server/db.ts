@@ -5,7 +5,7 @@ const db = new Database("database.sqlite", { verbose: console.log });
 
 export function getTests(letnik: number, profesor: number): Test[] {
   const sql = `
-  select tt.additional_note as title, tests_testimage.file as image from tests_test tt
+  select tt.additional_note as title, tests_testimage.file as image, tests_testimage.test_id as test_id from tests_test tt
   JOIN tests_testimage ON tt.id = tests_testimage.test_id
   WHERE year = ${letnik} AND professor_id = ${profesor};
   `;
